@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Indie Flower', cursive;
+}
+*{
+  box-sizing: border-box;
+}
+.text-right{
+  text-align: right;
+}
+.font-arial{
+  font-family: Arial;
+}
+
+.fs10{
+  font-size: 10px;
+}
+
+.space-5-bottom{
+  margin-bottom: 5px;
+}

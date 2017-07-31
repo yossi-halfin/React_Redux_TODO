@@ -1,0 +1,19 @@
+.List-Item{
+    list-style: none;
+    user-select: none;
+    border-bottom: 1px dotted #CCCCCC;
+    padding: 10px 10px;
+}
+
+.List-Item input{
+    margin-right: 5px;
+}
+
+.List-Item:last-child{
+    border-bottom: 0;
+}
+
+.List-Item .completed{
+    text-decoration: line-through;
+    font-style: italic;
+}

@@ -1,0 +1,12 @@
+.Add-Module{
+}
+.Add-Module .input-field{
+    width: 100%;
+    outline: none;
+    padding: 10px 15px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
+    border-radius: 0 0 10px 0;
+    border:1px solid #CCCCCC;
+    border-top:0;
+}

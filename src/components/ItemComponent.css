@@ -3,10 +3,16 @@
     user-select: none;
     border-bottom: 1px dotted #CCCCCC;
     padding: 10px 10px;
+    font-size: 18px;
+    display: flex;
 }
 
 .List-Item input{
     margin-right: 5px;
+}
+
+.List-Item .checkbox_title{
+    flex: 1;
 }
 
 .List-Item:last-child{

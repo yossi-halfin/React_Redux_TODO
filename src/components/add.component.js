@@ -24,9 +24,13 @@ class AddComponent extends Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
+
+        if(!this.state.text.length){
+            return
+        }
         store.dispatch(addTodo(this.state.text));
         this.setState({text:''});
-        event.preventDefault();
     }
 
     handleKeyPress(e) {

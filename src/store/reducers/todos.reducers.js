@@ -14,6 +14,7 @@ let init_state = [
 ];
 
 const todos = (state = init_state, action) => {
+    let index;
     switch (action.type) {
         case Actions.ADD_TODO:
             return [
@@ -25,10 +26,21 @@ const todos = (state = init_state, action) => {
                 }
             ];
         case Actions.COMPLETE_TODO:
-            let index = state.findIndex((todo)=>{
-                return todo.id === action.id?true:false;
+            debugger;
+            index = state.findIndex((todo)=>{
+                return todo.id ===  parseInt(action.id)?true:false;
             });
             state[index].completed = !state[index].completed;
+            return [
+                ...state
+            ];
+        case Actions.REMOVE_TODO:
+            debugger;
+
+            index = state.findIndex((todo)=>{
+                return todo.id === parseInt(action.id)?true:false;
+            });
+            state.splice(index,1);
             return [
                 ...state
             ];

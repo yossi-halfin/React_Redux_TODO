@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import ItemComponent from './item.component'
 import './ListComponent.css';
 
-class ListComponent extends Component
-{
+class ListComponent extends Component {
     render() {
         let todos = this.props.todos.map((todo)=>{
+            console.log('2');
             return <ItemComponent key={todo.id} id={todo.id} todo={todo}/>;
         });
         return (
@@ -14,6 +14,11 @@ class ListComponent extends Component
             </ul>
         );
     }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('ListComponent',nextProps);
+    }
+
 }
 
 

@@ -3,36 +3,47 @@
  */
 import React, {Component} from 'react';
 import './ItemComponent.css';
-import store from './../store';
 import completeTodo from './../store/actions/complete.actions';
+import removeTodo from './../store/actions/remove.actions';
+import {connect} from 'react-redux';
 
 class ItemComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = props.todo;
-        this.handleChange = this.handleChange.bind(this);
     }
 
     render() {
+        console.log('this.props', this.props);
         return (
             <li className="List-Item">
-                <label>
-                    <input id={this.props.id} checked={this.state.completed} onChange={this.handleChange}
+                <label className="checkbox_title">
+
+                    <input id={this.props.id} checked={this.props.todo.completed} onChange={this.props.complete}
                            type="checkbox"/>
                     <label htmlFor={this.props.id}
-                           className={this.state.completed ? 'completed' : null}>{this.state.text}</label>
+                           className={this.props.todo.completed ? 'completed' : null}>{this.props.todo.text}</label>
                 </label>
+                <i onClick={this.props.remove} className="fa fa-trash-o" aria-hidden="true"></i>
+
             </li>
         );
     }
 
-    handleChange(event) {
-        store.dispatch(completeTodo(this.state.id));
-
-    }
 
 }
+const mapStateToProps = (state, ownProps) => {
+    return {ownProps}
+}
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        complete: () => dispatch(completeTodo(ownProps.id)),
+        remove: () => dispatch(removeTodo(ownProps.id))
+    }
+}
 
-export default ItemComponent;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemComponent);
 

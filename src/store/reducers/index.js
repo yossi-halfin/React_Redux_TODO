@@ -5,4 +5,4 @@ const todoApp = combineReducers({
     todos
 });
 
-export default todoApp
+export default todoApp;

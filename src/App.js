@@ -4,12 +4,14 @@ import Counter from './components/count.component'
 import AddComponent from './components/add.component'
 import './App.css';
 import store from './store';
+import {connect} from 'react-redux'
+
+
 class App extends Component {
     todo_refs = [];
 
     constructor() {
         super();
-        this.state = store.getState();
     }
 
     render() {
@@ -17,31 +19,24 @@ class App extends Component {
             <div className="App">
                 <label className="App-header">TO-DO List</label>
                 <div className="text-right">
-                    <Counter todos={this.state.todos}/>
+                    <Counter todos={this.props.todos}/>
                 </div>
-                <ListComponent todos={this.state.todos}/>
+                <ListComponent todos={this.props.todos}/>
                 <AddComponent/>
             </div>
         );
     }
-
-    subscribe() {
-        this.todo_refs.push(store.subscribe(() => {
-            this.setState(store.getState());
-        }));
-    }
-
-    componentDidMount() {
-        this.subscribe();
-    }
-
-    componentWillUnmount() {
-        this.todo_refs.forEach((ref) => {
-            ref.unsubscribe();
-        });
-    }
-
-
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        todos : state.todos
+    }
+}
+
+
+
+
+export default connect(
+    mapStateToProps
+)(App);
